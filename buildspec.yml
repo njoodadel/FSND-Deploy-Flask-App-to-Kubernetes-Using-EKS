@@ -29,8 +29,7 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
   build:
     commands:
-      - docker build --tag $REPOSITORY_URI:$TAG .
-      - kubectl apply -f simple_jwt_api.yml
+      - docker build --tag $REPOSITORY_URI:$TAG
 
   post_build:
     commands:
