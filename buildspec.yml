@@ -24,7 +24,6 @@ phases:
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-        - REPOSITORY_URI= a1173d03d5a2f4c989fec43675ab62e5-831937332.us-east-2.elb.amazonaws.com 
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' simple_jwt_api.yml
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
